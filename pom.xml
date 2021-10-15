@@ -37,6 +37,14 @@
             <artifactId>allure-junit4</artifactId>
             <version>${allure-junit4.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.github.qsy7.java.dependencies/ashot -->
+        <dependency>
+            <groupId>io.github.qsy7.java.dependencies</groupId>
+            <artifactId>ashot</artifactId>
+            <version>0.1.0</version>
+            <type>pom</type>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -74,7 +82,10 @@
                 <artifactId>allure-maven</artifactId>
                 <version>2.9</version>
                 <configuration>
-                    <reportVersion>2.6.0</reportVersion>
+                    <reportVersion>2.14.0</reportVersion>
+                    <allureDownloadUrl>
+                        https://github.com/allure-framework/allure2/releases/download/2.14.0/allure-2.14.0.zip
+                    </allureDownloadUrl>
                 </configuration>
             </plugin>
         </plugins>

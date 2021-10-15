@@ -1,8 +1,17 @@
 package pages;
 
+import io.qameta.allure.Step;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+
+import java.io.File;
+import java.io.IOException;
+
+import static io.qameta.allure.Allure.addAttachment;
 
 public class TicketsPage extends AbstractPage {
 
@@ -18,30 +27,46 @@ public class TicketsPage extends AbstractPage {
 
     WebElement submitButton = driver.findElement(By.xpath("//button[@type='submit']"));
 
-    public void chooseQueue(String text) {
+    @Step("Choose queue")
+    public void chooseQueue(String text) throws IOException {
         Select choose = new Select(queue);
         choose.getOptions().forEach(option -> {
             System.out.println("Value = " + option.getAttribute("value") + ";Text = " + option.getText());
         });
         choose.selectByVisibleText(text);
+        File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        addAttachment("queue selected", FileUtils.openInputStream(screenshotFile));
     }
 
-    public void sumProblem(String text1) {
+    @Step("Enter summary of problem")
+    public void sumProblem(String text1) throws IOException {
         problem.sendKeys(text1);
+        File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        addAttachment("summary of problem added", FileUtils.openInputStream(screenshotFile));
     }
 
-    public void putDescription(String text2) {
+    @Step("Enter description")
+    public void putDescription(String text2) throws IOException {
         description.sendKeys(text2);
+        File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        addAttachment("description added", FileUtils.openInputStream(screenshotFile));
     }
-    public void choosePriority(String text3) {
+    @Step("Choose priority")
+    public void choosePriority(String text3) throws IOException {
         Select chooseTwo = new Select(priority);
         chooseTwo.getOptions().forEach(option -> {
             System.out.println("Value = " + option.getAttribute("value") + ";Text = " + option.getText());
         });
         chooseTwo.selectByVisibleText(text3);
+        File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        addAttachment("priority selected", FileUtils.openInputStream(screenshotFile));
     }
-    public void putEmail(String text4) {
+
+    @Step("Enter email")
+    public void putEmail(String text4) throws IOException {
         email.sendKeys(text4);
+        File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        addAttachment("email added", FileUtils.openInputStream(screenshotFile));
     }
 
     public void subButton() {
