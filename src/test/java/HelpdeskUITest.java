@@ -1,6 +1,6 @@
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
@@ -13,7 +13,7 @@ public class HelpdeskUITest {
 
     private WebDriver driver;
 
-    @BeforeEach
+    @Before
     public void setup() throws IOException {
 
         System.getProperties().load(ClassLoader.getSystemResourceAsStream("config.properties"));
@@ -30,7 +30,7 @@ public class HelpdeskUITest {
     }
 
     @Test
-    public void createTicketTest() throws InterruptedException {
+    public void createTicketTest() throws InterruptedException, IOException {
 
         driver.get(System.getProperty("site.url"));
 
